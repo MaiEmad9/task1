@@ -154,41 +154,21 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script>
-        // // hero block mobilo card perspective
-        // const heroMobiloCard = document.getElementsByClassName("mobilo-card-img");
-        // document.addEventListener("scroll", function () {
-            
-                // return;
-            // const scrollPercent = window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight);
-            
-            // const startMovingPoint = 4;
-            // const leftMove = 11.5;
-            // const rightMove = 13.5;
-            // if (scrollPercent > startMovingPoint && scrollPercent < leftMove) {
-            //     heroMobiloCard.style.transformStyle = `preserve-3`;
-            //     heroMobiloCard.style.transform = `perspective(${window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight)}px) rotateY(-${(scrollPercent - startMovingPoint)}deg)`;
-            //     return;
-            // } else if (scrollPercent >= leftMove && scrollPercent < rightMove) {
-            //     heroMobiloCard.style.transform = `perspective(${75 * (scrollPercent - startMovingPoint)}px) rotateY(${-15.5 + 8 * (scrollPercent - 11)}deg)`;
-            //     return;
-            // } else if (scrollPercent >= rightMove) {
-            //     heroMobiloCard.style.transform = `perspective(${700 - 65 * (scrollPercent - 12)}px) rotateY(${10 - 4.5 * (scrollPercent - 12)}deg)`;
-            //     return;
-            // } else {
-            //     heroMobiloCard.style.transform = `initial`;
-            //     return;
-            // }
-        // });
-
         document.addEventListener('scroll', function () {
             var scroll = $(window).scrollTop();
             var section = $(".second-section");
             var sectionPositionTop = section.offset().top - 350;
             var sectionPosition = section.offset().top -150;
             var sectionPositiondown = section.offset().top - 50;
-            if (sectionPositionTop <= scroll) {
+            if (scroll > 500) {
+                console.log("vv");
                 $(".mobilo-card").addClass("position");
-                $(".mobilo-card-img").css({"top": window.pageYOffset + "px" });
+                $(".mobilo-card-img").css({"top": window.pageYOffset + "px","left" : window.pageYOffset/(document.querySelector("body").scrollWidth - document.scrollingElement.offsetWidth) * 10 +"px","transform":"skew(-" + window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight) + "deg , -" + window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight) + "deg) scale(0.8)" });
+            }else{
+                $(".mobilo-card").removeClass("position").show("slow");
+                $(".mobilo-card-img").css("transform","skew(0,0) scale(1)");
+            }
+            if (sectionPositionTop <= scroll) {
                 section.addClass("animation");
                 if (sectionPositionTop < scroll) {
                     setTimeout(function(){
@@ -209,7 +189,6 @@
                 // $(".second-section .right-block").hide("slow");
                     section.removeClass("animation down start info");
                     $(".second-section .first-text").show("slow");
-                    $(".mobilo-card").removeClass("position").show("slow");
                     // $(".second-section .right-block").show("slow");
             }
         });

@@ -81,6 +81,10 @@ body {
 }
 .first-section .position .mobilo-card-img{
     position: absolute;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 @keyframes scale {
     0% {
