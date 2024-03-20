@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Mobilo - Digital Business Card for Teams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="assets/images/icon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="assets/images/icon.ico" rel="apple-touch-icon" />
 
@@ -160,8 +162,7 @@
             var sectionPositionTop = section.offset().top - 350;
             var sectionPosition = section.offset().top -150;
             var sectionPositiondown = section.offset().top - 50;
-            if (scroll > 500) {
-                console.log("vv");
+            if (scroll > 500 && $(window).width() > 768) {
                 $(".mobilo-card").addClass("position");
                 $(".mobilo-card-img").css({"top": window.pageYOffset + "px","left" : window.pageYOffset/(document.querySelector("body").scrollWidth - document.scrollingElement.offsetWidth) * 10 +"px","transform":"skew(-" + window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight) + "deg , -" + window.pageYOffset/(document.querySelector("body").scrollHeight - document.scrollingElement.offsetHeight) + "deg) scale(0.8)" });
             }else{
@@ -181,7 +182,9 @@
                         section.removeClass("down start");
                         section.addClass("info");
                         $(".second-section .first-text").fadeOut(1000);
-                        $(".mobilo-card").hide("slow");
+                        if($(window).width() > 768){
+                            $(".mobilo-card").hide("slow");
+                        }
                     }
                 }
                 // console.log(sectionPosition);

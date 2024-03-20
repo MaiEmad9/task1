@@ -1,11 +1,11 @@
 body {
     overflow-x: hidden;
     background-color: #0f1e35;
+    width: 100vw !important;
 }
 
 .header {
     z-index: 100;
-    width: 100vw;
     height: 85px;
     opacity: 1;
     color: #0f1e35;
